@@ -1,0 +1,77 @@
+query UserGetRanking {
+  userGetRanking {
+    id
+    rank
+    firstName
+    lastName
+    points
+    winsCount
+    lossesCount
+    wonSetsCount
+    lostSetsCount
+    wonPointsCount
+    lostPointsCount
+    games {
+      id
+      index
+      user1 {
+        id
+        firstName
+        lastName
+        rank
+      }
+      user2 {
+        id
+        firstName
+        lastName
+        rank
+      }
+      scoreSet1User1
+      scoreSet1User2
+      scoreSet2User1
+      scoreSet2User2
+      scoreSet3User1
+      scoreSet3User2
+      winner
+    }
+  }
+}
+
+query UserFindOne($input: UserFindOneInput!) {
+  userFindOne(input: $input) {
+    id
+    rank
+    firstName
+    lastName
+    points
+    winsCount
+    lossesCount
+    wonSetsCount
+    lostSetsCount
+    wonPointsCount
+    lostPointsCount
+    games {
+      id
+      index
+      user1 {
+        id
+        firstName
+        lastName
+        rank
+      }
+      user2 {
+        id
+        firstName
+        lastName
+        rank
+      }
+      scoreSet1User1
+      scoreSet1User2
+      scoreSet2User1
+      scoreSet2User2
+      scoreSet3User1
+      scoreSet3User2
+      winner
+    }
+  }
+}

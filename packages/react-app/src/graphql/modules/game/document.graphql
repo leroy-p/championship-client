@@ -1,0 +1,29 @@
+query GameFindMany {
+  gameFindMany {
+    id
+    index
+    user1 {
+      id
+      firstName
+      lastName
+      rank
+    }
+    user2 {
+      id
+      firstName
+      lastName
+      rank
+    }
+    scoreSet1User1
+    scoreSet1User2
+    scoreSet2User1
+    scoreSet2User2
+    scoreSet3User1
+    scoreSet3User2
+    winner
+  }
+}
+
+mutation GameCompleteOne($input: GameCompleteInput!) {
+  gameCompleteOne(input: $input)
+}

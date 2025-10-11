@@ -1,5 +1,5 @@
 {
-  "name": "react-starter",
+  "name": "championship-client",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,12 +7,16 @@
     "format": "biome check --write"
   },
   "dependencies": {
+    "@apollo/client": "4.0.7",
     "@biomejs/biome": "2.2.2",
+    "@graphql-codegen/cli": "6.0.0",
+    "@graphql-codegen/client-preset": "5.1.0",
     "@types/node": "24.3.0",
     "@types/react": "19.1.11",
     "@types/react-dom": "19.1.8",
     "@types/react-helmet": "6.1.11",
     "@vitejs/plugin-react": "5.0.1",
+    "graphql": "16.11.0",
     "i18next": "25.4.2",
     "i18next-browser-languagedetector": "8.2.0",
     "i18next-parser": "9.3.0",

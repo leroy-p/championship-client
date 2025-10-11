@@ -1,23 +1,38 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import { RoutePath } from './router-config'
+import Calendar from '../pages/calendar'
 import NotFound from '../pages/error/not-found'
 import Loading from '../pages/loading/loading'
+import Player from '../pages/player'
+import Ranking from '../pages/ranking'
 import Root from '../pages/root'
 import Page from './page'
+import { RoutePath } from './router-config'
 
 interface IRouteParams {
   component: React.ReactNode
   path: RoutePath
-  pageKey?: string
+  pageName?: string
 }
 
 const routes: IRouteParams[] = [
   {
     component: <Root />,
     path: RoutePath.ROOT,
-    pageKey: 'root',
+  },
+  {
+    component: <Ranking />,
+    path: RoutePath.RANKING,
+    pageName: 'Classement',
+  },
+  {
+    component: <Calendar />,
+    path: RoutePath.CALENDAR,
+    pageName: 'Calendrier',
+  },
+  {
+    component: <Player />,
+    path: RoutePath.PLAYER,
   },
 ]
 
@@ -26,10 +41,10 @@ export default function Router() {
     <Suspense fallback={Loading()}>
       <BrowserRouter>
         <Routes>
-          {routes.map(({ component, path, pageKey }) => (
-            <Route element={<Page children={component} pageKey={pageKey} />} key={path} path={path} />
+          {routes.map(({ component, path, pageName }) => (
+            <Route element={<Page children={component} pageName={pageName} />} key={path} path={path} />
           ))}
-          <Route element={<Page children={<NotFound />} pageKey="not-found" />} path="*" />
+          <Route element={<Page children={<NotFound />} pageName="404" />} path="*" />
         </Routes>
       </BrowserRouter>
     </Suspense>

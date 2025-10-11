@@ -1,4 +1,4 @@
-# Getting Started with React Starter
+# Getting Started with Championship Client
 
 This project uses React, Typescript, Vite, Biome, Styled Components.
 
