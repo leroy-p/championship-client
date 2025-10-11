@@ -2,7 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 
 export const apolloClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://localhost:3000/graphql',
+    uri: 'https://championship-server.onrender.com/graphql',
   }),
   cache: new InMemoryCache(),
 })
