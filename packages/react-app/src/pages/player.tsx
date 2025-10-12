@@ -106,7 +106,7 @@ const Container = styled.div`
   width: 100%;
 
   @media screen and (max-width: 824px) {
-    padding-top: 24px;
+    padding-top: 32px;
   }
 
   .player-data-container {

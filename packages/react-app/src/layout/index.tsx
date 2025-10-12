@@ -22,10 +22,10 @@ export default function Layout({ children }: IProps) {
 
 const Container = styled(Div100vh)`
   align-items: center;
-  background-color: ${({ theme }) => theme.palette.primary};
+  /* background-color: ${({ theme }) => theme.palette.primary};
   background-image: url("${background}");
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
   display: flex;
   flex-direction: column;
   justify-content: center;

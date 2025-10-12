@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import playBold from '../assets/fonts/Play-Bold.ttf'
 import playRegular from '../assets/fonts/Play-Regular.ttf'
+import background from '../assets/images/background.png'
 import { ITheme } from './theme'
 
 const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
@@ -23,6 +24,11 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   }
 
   body {
+    background-attachment: fixed;
+    background-color: ${({ theme }) => theme.palette.primary};
+    background-image: url("${background}");
+    background-position: center;
+    background-size: cover;
     font-family: 'Play', sans-serif;
     font-size: 16px;
   }
