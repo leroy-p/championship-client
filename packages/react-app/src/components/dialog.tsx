@@ -19,7 +19,8 @@ export default function Dialog({ children, visible, close }: IProps) {
 
 const Container = styled(Div100vh)<{ $visible: boolean }>`
   align-items: center;
-  background-color: #00000080;
+  background: rgba(33, 33, 34, 0.60);
+  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +34,13 @@ const Container = styled(Div100vh)<{ $visible: boolean }>`
   z-index: 1;
 
   .dialog-main-container {
-    border: ${({ theme }) => `solid 1px ${theme.palette.text}`};
-    background-color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.palette.primary};
+    border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+    border-radius: 32px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.50);
+
+    @media screen and (max-width: 632px) {
+      width: calc(100% - 32px);
+    }
   }
 `

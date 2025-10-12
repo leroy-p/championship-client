@@ -13,15 +13,14 @@ export default function Row({ user }: IProps) {
   return (
     <Container>
       <div className="table-cell main">
-        <p>
-          <span className="rank">{user.rank}</span>
-          <Link
-            className="name"
-            to={generateRoutePath(RoutePath.PLAYER, { id: user.id })}
-          >{`${user.firstName} ${user.lastName}`}</Link>
-        </p>
+        <p className="rank">{user.rank}</p>
+        <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+        <Link className="name" to={generateRoutePath(RoutePath.PLAYER, { id: user.id })}>
+          <p>{user.firstName}</p>
+          <p>{user.lastName}</p>
+        </Link>
       </div>
-      <div className="table-cell">
+      <div className="table-cell pts">
         <p>{user.points}</p>
       </div>
       <div className="table-cell">
@@ -51,10 +50,10 @@ export default function Row({ user }: IProps) {
 
 const Container = styled.div`
   align-items: center;
-  border-top: ${({ theme }) => `solid 1px ${theme.palette.text}`};
+  border-top: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 56px;
   justify-content: center;
   width: 100%;
 
@@ -72,33 +71,65 @@ const Container = styled.div`
   }
 
   .table-cell.main {
+    gap: 8px;
     justify-content: flex-start;
-    padding-left: 8px;
+    padding-left: 16px;
     width: calc(100% - 7 * 32px - 96px);
 
-    & > p {
-      .name {
-        margin-left: 8px;
+    @media screen and (max-width: 632px) {
+      width: calc(100% - 7 * 32px);
+      padding-left: 8px;
+    }
+
+    .rank {
+      color: ${({ theme }) => theme.palette.secondary};
+      font-size: 16px;
+      font-weight: bold;
+      width: 20px;
+    }
+
+    .pic-container {
+      border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+
+      @media screen and (max-width: 632px) {
+        display: none;
+      }
+    }
+
+    .name {
+      font-size: 14px;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      justify-content: center;
+
+      @media screen and (max-width: 632px) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      & > p {
+        font-size: 14px;
       }
     }
   }
 
+  .table-cell.pts {
+    & > p {
+      color: ${({ theme }) => theme.palette.secondary};
+      font-weight: bold;
+    }
+  }
+
   .table-cell.results {
-    gap: 2px;
     width: 96px;
 
-    .game-result {
-      border-radius: 50%;
-      height: 16px;
-      width: 16px;
-    }
-
-    .game-result.victory {
-      background-color: ${({ theme }) => theme.palette.win};
-    }
-
-    .game-result.defeat {
-      background-color: ${({ theme }) => theme.palette.lose};
+    @media screen and (max-width: 632px) {
+      display: none;
     }
   }
 `

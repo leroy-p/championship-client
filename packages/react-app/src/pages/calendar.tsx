@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client/react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import arrowIcon from '../assets/images/arrow.png'
 import GameRow from '../components/calendar/game-row'
 import UpdateGameDialog from '../components/calendar/update-game-dialog'
 import Loader from '../components/loader'
@@ -23,11 +24,21 @@ export default function Calendar() {
         {games && (
           <>
             <div className="index-selector-container">
-              <button onClick={() => setIndex((value) => Math.max(1, value - 1))}>
-                <p>{'<'}</p>
+              <button
+                className={index === 1 ? 'arrow-button reversed hidden' : 'arrow-button reversed'}
+                onClick={() => setIndex((value) => Math.max(1, value - 1))}
+              >
+                <img alt="" src={arrowIcon} />
               </button>
-              <p>Journée {index}</p>
-              <button onClick={() => setIndex((value) => Math.min(maxIndex, value + 1))}>{'>'}</button>
+              <p>
+                Journée <span>{index}</span>
+              </p>
+              <button
+                className={index === maxIndex ? 'arrow-button hidden' : 'arrow-button'}
+                onClick={() => setIndex((value) => Math.min(maxIndex, value + 1))}
+              >
+                <img alt="" src={arrowIcon} />
+              </button>
             </div>
             <div className="games-container">
               {[...games]
@@ -58,23 +69,55 @@ const Container = styled.div`
 
   .index-selector-container {
     align-items: center;
+    background-color: rgba(22, 22, 23, 0.20);
+    border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+    border-radius: 32px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: row;
+    height: 64px;
     justify-content: center;
-    width: 400px;
+    margin-bottom: 48px;
+    width: 240px;
 
-    & > button {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      height: 24px;
-      justify-content: center;
-      width: 24px;
+    @media screen and (max-width: 824px) {
+      margin-bottom: 16px;
+    }
+
+    .arrow-button {
+      height: 16px;
+      width: 16px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      & > img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .arrow-button.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .arrow-button.reversed {
+      & > img {
+       transform: rotate(180deg);
+      }
     }
 
     & > p {
-      width: 96px;
+      width: 128px;
       text-align: center;
+
+      & > span {
+        color: ${({ theme }) => theme.palette.secondary};
+        font-weight: bold;
+      }
     }
   }
 

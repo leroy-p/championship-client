@@ -28,7 +28,14 @@ const Container = styled.div`
   justify-content: center;
 
   & > p {
+    font-size: 16px;
+
+    @media screen and (max-width: 824px) {
+      font-size: 12px;
+    }
+
     .strong {
+      color: ${({ theme }) => theme.palette.secondary};
       font-weight: bold;
     }
   }

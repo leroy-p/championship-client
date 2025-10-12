@@ -4,7 +4,7 @@ export default function Head() {
   return (
     <Container>
       <div className="table-cell main" />
-      <div className="table-cell">
+      <div className="table-cell pts">
         <p>pts</p>
       </div>
       <div className="table-cell">
@@ -56,14 +56,29 @@ const Container = styled.div`
     }
   }
 
+  .table-cell.pts > p {
+    color: ${({ theme }) => theme.palette.secondary};
+    font-weight: bold;
+  }
+
   .table-cell.main {
     width: calc(100% - 7 * 32px - 96px);
+
+    @media screen and (max-width: 632px) {
+      width: calc(100% - 7 * 32px);
+    }
   }
 
   .table-cell.results {
     width: 96px;
 
+    @media screen and (max-width: 632px) {
+      display: none;
+    }
+
     & > p {
+      font-weight: bold;
+
       .victory {
         color: ${({ theme }) => theme.palette.win};
       }

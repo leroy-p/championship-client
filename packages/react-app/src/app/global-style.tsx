@@ -1,12 +1,19 @@
 import { createGlobalStyle } from 'styled-components'
-import shortStack from '../assets/fonts/ShortStack-Regular.ttf'
+import playBold from '../assets/fonts/Play-Bold.ttf'
+import playRegular from '../assets/fonts/Play-Regular.ttf'
 import { ITheme } from './theme'
 
 const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   @font-face {
-    font-family: "ShortStack";
-    src: url("${shortStack}");
-    font-style: normal;
+    font-family: "Play";
+    src: url("${playRegular}");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Play";
+    src: url("${playBold}");
+    font-weight: bold;
   }
 
   * {
@@ -16,13 +23,13 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   }
 
   body {
-    font-family: 'ShortStack', sans-serif;
+    font-family: 'Play', sans-serif;
     font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6, p, a, button, input {
     color: ${({ theme }) => theme.palette.text};
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Play', sans-serif;
     letter-spacing: normal;
     line-height: normal;
     margin: 0;
@@ -34,7 +41,6 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
 
   a {
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
     text-decoration: none;
 
     &:hover {
@@ -47,13 +53,8 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     border: none;
     color: ${({ theme }) => theme.palette.text};
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
     outline:none;
     padding: 0;
-
-    &:hover {
-      opacity: 0.7;
-    }
   }
 
   input {

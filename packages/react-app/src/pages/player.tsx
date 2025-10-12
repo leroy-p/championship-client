@@ -38,20 +38,49 @@ export default function Player() {
         {user && (
           <>
             <div className="player-data-container">
-              <p className="name">{`${user.firstName} ${user.lastName}`}</p>
-              <p className="rank">Classement : {user.rank}</p>
-              <Streak user={user} />
-              <div className="row-container">
-                <p>Victoires : {user.winsCount}</p>
-                <p>Défaites : {user.lossesCount}</p>
+              <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+              <div className="main-container">
+                <p className="name">{`${user.firstName} ${user.lastName}`}</p>
+                <p className="rank">
+                  Classement : <span>{user.rank}</span>
+                </p>
+                <Streak user={user} />
               </div>
               <div className="row-container">
-                <p>Sets remportés : {user.wonSetsCount}</p>
-                <p>Sets perdus : {user.lostSetsCount}</p>
+                <div>
+                  <p>
+                    Victoires : <span>{user.winsCount}</span>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    Défaites : <span>{user.lossesCount}</span>
+                  </p>
+                </div>
               </div>
               <div className="row-container">
-                <p>Points remportés : {user.wonPointsCount}</p>
-                <p>Points perdus : {user.lostPointsCount}</p>
+                <div>
+                  <p>
+                    Sets remportés : <span>{user.wonSetsCount}</span>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    Sets perdus : <span>{user.lostSetsCount}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="row-container">
+                <div>
+                  <p>
+                    Points remportés : <span>{user.wonPointsCount}</span>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    Points perdus : <span>{user.lostPointsCount}</span>
+                  </p>
+                </div>
               </div>
             </div>
             <div className="games-container">
@@ -73,22 +102,112 @@ const Container = styled.div`
   flex-direction: column;
   gap: 24px;
   justify-content: flex-start;
+  padding-top: 48px;
   width: 100%;
+
+  @media screen and (max-width: 824px) {
+    padding-top: 24px;
+  }
 
   .player-data-container {
     align-items: center;
+    background-color: rgba(22, 22, 23, 0.20);
+    border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+    border-radius: 36px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
-    gap: 8px;
     justify-content: flex-start;
-    width: 100%;
+    margin-bottom: 48px;
+    position: relative;
+    width: 480px;
+
+    @media screen and (max-width: 824px) {
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .pic-container {
+      border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+      background-color: ${({ theme }) => theme.palette.dark};
+      border-radius: 50%;
+      height: 128px;
+      left: calc(50% - 64px);
+      position: absolute;
+      top: -64px;
+      width: 128px;
+
+      @media screen and (max-width: 824px) {
+        height: 80px;
+        left: calc(50% - 40px);
+        position: absolute;
+        top: -40px;
+        width: 80px;
+      }
+    }
+
+    .main-container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 72px 16px 16px 16px;
+      justify-content: flex-start;
+      width: 100%;
+
+      @media screen and (max-width: 824px) {
+        padding: 48px 16px 16px 16px;
+      }
+
+      .name {
+        font-size: 24px;
+      }
+
+      .rank {
+        font-size: 16px;
+
+        & > span {
+          color: ${({ theme }) => theme.palette.secondary};
+          font-weight: bold;
+        }
+      }
+    }
 
     .row-container {
       align-items: center;
       display: flex;
       flex-direction: row;
-      gap: 16px;
       justify-content: center;
+      width: 100%;
+
+      & > div {
+        border-top: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+        border-right: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 8px;
+        width: 50%;
+
+        & > p {
+          font-size: 16px;
+
+          @media screen and (max-width: 824px) {
+            font-size: 12px;
+          }
+
+          & > span {
+            color: ${({ theme }) => theme.palette.secondary};
+            font-weight: bold;
+          }
+        }
+      }
+
+      & > div:nth-last-child(1) {
+        border-right: none;
+      }
     }
   }
 

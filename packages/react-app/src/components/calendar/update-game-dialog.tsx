@@ -113,13 +113,23 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
     <Dialog close={onClose} visible={Boolean(game)}>
       <Container>
         {loading && <Loader />}
-        <p className="title">Mise à jour du match</p>
+        <div className="title-container">
+          <p className="title">Édition</p>
+        </div>
         <div className="main-container">
           <div className="form-container">
             <div className="names-container">
-              <p className="name-left">{`${game.user1.firstName} ${game.user1.lastName}`}</p>
+              <div className="name-container left">
+                <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+                <p className="name">{`${game.user1.firstName} ${game.user1.lastName}`}</p>
+                <p className="rank">{`(${game.user1.rank})`}</p>
+              </div>
               <p className="label">vs</p>
-              <p className="name-right">{`${game.user2.firstName} ${game.user2.lastName}`}</p>
+              <div className="name-container right">
+                <p className="rank">{`(${game.user1.rank})`}</p>
+                <p className="name">{`${game.user2.firstName} ${game.user2.lastName}`}</p>
+                <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+              </div>
             </div>
             <div className="row-container">
               <input
@@ -127,7 +137,7 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
                 type="number"
                 value={scoreSet1User1 === -1 ? '' : scoreSet1User1}
               />
-              <p className="label">set 1</p>
+              <p className="label">Set 1</p>
               <input
                 onChange={(event) => setScoreSet1User2(Number.parseInt(event.target.value))}
                 type="number"
@@ -140,7 +150,7 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
                 type="number"
                 value={scoreSet2User1 === -1 ? '' : scoreSet2User1}
               />
-              <p className="label">set 2</p>
+              <p className="label">Set 2</p>
               <input
                 onChange={(event) => setScoreSet2User2(Number.parseInt(event.target.value))}
                 type="number"
@@ -153,7 +163,7 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
                 type="number"
                 value={scoreSet3User1 === -1 ? '' : scoreSet3User1}
               />
-              <p className="label">set 3</p>
+              <p className="label">Set 3</p>
               <input
                 onChange={(event) => setScoreSet3User2(Number.parseInt(event.target.value))}
                 type="number"
@@ -173,13 +183,29 @@ const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   justify-content: center;
-  padding: 24px;
+  padding-bottom: 24px;
   width: 600px;
 
-  .title {
-    text-align: center;
+  @media screen and (max-width: 632px) {
+    width: 100%;
+  }
+
+  .title-container {
+    align-items: center;
+    border-bottom: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    width: 100%;
+
+    .title {
+      /* color: ${({ theme }) => theme.palette.secondary}; */
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
   }
 
   .main-container {
@@ -187,6 +213,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 32px 0;
     width: 100%;
 
     .form-container {
@@ -205,9 +232,50 @@ const Container = styled.div`
         justify-content: flex-start;
         width: 100%;
 
-        .name-left {
-          text-align: right;
+        .name-container {
+          align-items: center;
+          display: flex;
+          gap: 8px;
+          flex-direction: row;
+          justify-content: flex-end;
           width: calc(50% - 32px);
+
+          .name {
+            font-size: 16px;
+
+            @media screen and (max-width: 632px) {
+              font-size: 14px;
+            }
+          }
+
+          .pic-container {
+            border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+            border-radius: 50%;
+            height: 32px;
+            width: 32px;
+
+            @media screen and (max-width: 632px) {
+              display: none;
+            }
+          }
+
+          .rank {
+            color: ${({ theme }) => theme.palette.secondary};
+            font-weight: bold;
+
+            @media screen and (max-width: 632px) {
+              display: none;
+            }
+          }
+        }
+
+
+        .name-container.left {
+          justify-content: flex-end;
+        }
+
+        .name-container.right {
+          justify-content: flex-start;
         }
 
         .name-right {
@@ -216,8 +284,11 @@ const Container = styled.div`
         }
 
         .label {
-          width: 64px;
+          color: ${({ theme }) => theme.palette.secondary};
+          font-weight: bold;
           text-align: center;
+          text-transform: uppercase;
+          width: 64px;
         }
       }
 
@@ -234,10 +305,12 @@ const Container = styled.div`
         }
 
         & > input {
-          background-color: transparent;
-          border: ${({ theme }) => `solid 1px ${theme.palette.text}`};
+          background-color: ${({ theme }) => theme.palette.dark};
+          border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+          border-radius: 4px;
+          font-weight: bold;
           height: 24px;
-          width: 24px;
+          width: 80px;
           text-align: center;
         }
       }
@@ -245,8 +318,19 @@ const Container = styled.div`
   }
 
   & > button {
-    border: ${({ theme }) => `solid 1px ${theme.palette.text}`};
-    height: 24px;
-    padding: 0 8px;
+    background-color: ${({ theme }) => theme.palette.dark};
+    border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
+    border-radius: 20px;
+    font-weight: bold;
+    height: 40px;
+    width: 140px;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 rgba(64, 255, 255, 0.50);
+    }
+  }
+
+  .error {
+    margin-top: 8px;
   }
 `

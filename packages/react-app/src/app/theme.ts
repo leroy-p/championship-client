@@ -1,6 +1,8 @@
 export interface ITheme {
   palette: {
-    background: string
+    dark: string
+    primary: string
+    secondary: string
     text: string
     error: string
     win: string
@@ -10,10 +12,12 @@ export interface ITheme {
 
 export const theme: ITheme = {
   palette: {
-    background: '#222222',
+    dark: '#161617',
+    primary: '#212122',
+    secondary: '#40ffff',
     text: '#ffffff',
-    error: '#fd5859',
-    win: '#269e50',
-    lose: '#fd5859',
+    error: '#e2393c',
+    win: '#40ffff',
+    lose: '#e2393c',
   },
 }

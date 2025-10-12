@@ -22,14 +22,14 @@ const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: 2px;
+  gap: 4px;
   justify-content: center;
   width: 100%;
 
   .game-result {
     border-radius: 50%;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 
   .game-result.victory {

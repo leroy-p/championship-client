@@ -1,15 +1,8 @@
-import { useMutation, useQuery } from '@apollo/client/react'
+import { useQuery } from '@apollo/client/react'
 import styled from 'styled-components'
 import Loader from '../components/loader'
 import RankingTable from '../components/ranking-table'
-import {
-  GameCompleteOneDocument,
-  GameCompleteOneMutation,
-  GameCompleteOneMutationVariables,
-  UserGetRankingDocument,
-  UserGetRankingQuery,
-  UserGetRankingQueryVariables,
-} from '../graphql/generated/graphql'
+import { UserGetRankingDocument, UserGetRankingQuery, UserGetRankingQueryVariables } from '../graphql/generated/graphql'
 import Layout from '../layout'
 
 export default function Ranking() {
