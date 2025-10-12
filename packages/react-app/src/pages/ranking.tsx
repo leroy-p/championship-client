@@ -14,7 +14,7 @@ import Layout from '../layout'
 
 export default function Ranking() {
   const { data, loading } = useQuery<UserGetRankingQuery, UserGetRankingQueryVariables>(UserGetRankingDocument, {
-    variables: {},
+    fetchPolicy: 'network-only',
   })
 
   return (

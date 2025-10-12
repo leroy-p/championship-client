@@ -9,9 +9,7 @@ import Layout from '../layout'
 import { GqlGame } from '../types/types'
 
 export default function Calendar() {
-  const { data, loading, refetch } = useQuery<GameFindManyQuery, GameFindManyQueryVariables>(GameFindManyDocument, {
-    variables: {},
-  })
+  const { data, loading, refetch } = useQuery<GameFindManyQuery, GameFindManyQueryVariables>(GameFindManyDocument, {})
   const [index, setIndex] = useState<number>(1)
   const [selectedGame, setSelectedGame] = useState<GqlGame | undefined>(undefined)
 
