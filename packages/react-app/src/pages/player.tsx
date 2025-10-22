@@ -43,7 +43,7 @@ export default function Player() {
                 <img alt="" src={`/avatars/${formatName(user.firstName)}.png`} />
               </div>
               <div className="main-container">
-                <p className="name">{`${user.firstName} ${user.lastName}.png`}</p>
+                <p className="name">{`${user.firstName} ${user.lastName}`}</p>
                 <p className="rank">
                   Classement : <span>{user.rank}</span>
                 </p>
