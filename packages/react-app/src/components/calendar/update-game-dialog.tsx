@@ -7,6 +7,7 @@ import {
   GameCompleteOneMutationVariables,
 } from '../../graphql/generated/graphql'
 import { GqlGame, GqlUserGame } from '../../types/types'
+import { formatName } from '../../utils/utils'
 import Dialog from '../dialog'
 import Loader from '../loader'
 
@@ -120,7 +121,9 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
           <div className="form-container">
             <div className="names-container">
               <div className="name-container left">
-                <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+                <div className="pic-container">
+                  <img alt="" src={`/avatars/${formatName(game.user1.firstName)}.png`} />
+                </div>
                 <p className="name">{`${game.user1.firstName} ${game.user1.lastName}`}</p>
                 <p className="rank">{`(${game.user1.rank})`}</p>
               </div>
@@ -128,7 +131,9 @@ export default function UpdateGameDialog({ game, refetch, close }: IProps) {
               <div className="name-container right">
                 <p className="rank">{`(${game.user1.rank})`}</p>
                 <p className="name">{`${game.user2.firstName} ${game.user2.lastName}`}</p>
-                <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+                <div className="pic-container">
+                  <img alt="" src={`/avatars/${formatName(game.user2.firstName)}.png`} />
+                </div>
               </div>
             </div>
             <div className="row-container">
@@ -252,10 +257,16 @@ const Container = styled.div`
             border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
             border-radius: 50%;
             height: 32px;
+            overflow: hidden;
             width: 32px;
 
             @media screen and (max-width: 632px) {
               display: none;
+            }
+
+            & > img {
+              height: 100%;
+              width: 100%;
             }
           }
 

@@ -25,3 +25,10 @@ export function getUserStreak(user: GqlUser): GameResult[] {
 
   return result.reverse().slice(0, 5).reverse()
 }
+
+export function formatName(str: string) {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+}

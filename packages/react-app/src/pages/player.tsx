@@ -10,6 +10,7 @@ import Streak from '../components/ranking-table/streak'
 import { UserFindOneDocument, UserFindOneQuery, UserFindOneQueryVariables } from '../graphql/generated/graphql'
 import Layout from '../layout'
 import { GqlUserGame } from '../types/types'
+import { formatName } from '../utils/utils'
 
 export default function Player() {
   const { id } = useParams()
@@ -38,9 +39,11 @@ export default function Player() {
         {user && (
           <>
             <div className="player-data-container">
-              <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+              <div className="pic-container">
+                <img alt="" src={`/avatars/${formatName(user.firstName)}.png`} />
+              </div>
               <div className="main-container">
-                <p className="name">{`${user.firstName} ${user.lastName}`}</p>
+                <p className="name">{`${user.firstName} ${user.lastName}.png`}</p>
                 <p className="rank">
                   Classement : <span>{user.rank}</span>
                 </p>
@@ -134,6 +137,7 @@ const Container = styled.div`
       border-radius: 50%;
       height: 128px;
       left: calc(50% - 64px);
+      overflow: hidden;
       position: absolute;
       top: -64px;
       width: 128px;
@@ -144,6 +148,11 @@ const Container = styled.div`
         position: absolute;
         top: -40px;
         width: 80px;
+      }
+
+      & > img {
+        height: 100%;
+        width: 100%;
       }
     }
 

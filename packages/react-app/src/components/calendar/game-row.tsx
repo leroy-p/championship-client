@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { generateRoutePath, RoutePath } from '../../app/router-config'
 import { GqlGame, GqlUserGame } from '../../types/types'
+import { formatName } from '../../utils/utils'
 import GameScore from './game-score'
 
 interface IProps {
@@ -13,7 +14,9 @@ export default function GameRow({ game, showUpdateDialog }: IProps) {
   return (
     <Container>
       <div className={game.winner === 1 ? 'player-container winner left' : 'player-container left'}>
-        <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+        <div className="pic-container">
+          <img alt="" src={`/avatars/${formatName(game.user1.firstName)}.png`} />
+        </div>
         <Link
           className="name"
           to={generateRoutePath(RoutePath.PLAYER, { id: game.user1.id })}
@@ -31,7 +34,9 @@ export default function GameRow({ game, showUpdateDialog }: IProps) {
           className="name"
           to={generateRoutePath(RoutePath.PLAYER, { id: game.user2.id })}
         >{`${game.user2.firstName} ${game.user2.lastName}`}</Link>
-        <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+        <div className="pic-container">
+          <img alt="" src={`/avatars/${formatName(game.user2.firstName)}.png`} />
+        </div>
       </div>
     </Container>
   )
@@ -74,10 +79,16 @@ const Container = styled.div`
       border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
       border-radius: 50%;
       height: 40px;
+      overflow: hidden;
       width: 40px;
 
       @media screen and (max-width: 824px) {
         display: none;
+      }
+
+      & > img {
+        height: 100%;
+        width: 100%;
       }
     }
 

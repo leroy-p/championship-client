@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { generateRoutePath, RoutePath } from '../../app/router-config'
 import { GameResult, GqlUser } from '../../types/types'
-import { getUserStreak } from '../../utils/utils'
+import { formatName, getUserStreak } from '../../utils/utils'
 import Streak from './streak'
 
 interface IProps {
@@ -14,7 +14,9 @@ export default function Row({ user }: IProps) {
     <Container>
       <div className="table-cell main">
         <p className="rank">{user.rank}</p>
-        <div className="pic-container">{/* <img alt="" src={} /> */}</div>
+        <div className="pic-container">
+          <img alt="" src={`/avatars/${formatName(user.firstName)}.png`} />
+        </div>
         <Link className="name" to={generateRoutePath(RoutePath.PLAYER, { id: user.id })}>
           <p>{user.firstName}</p>
           <p>{user.lastName}</p>
@@ -92,10 +94,16 @@ const Container = styled.div`
       border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
       border-radius: 50%;
       height: 40px;
+      overflow: hidden;
       width: 40px;
 
       @media screen and (max-width: 632px) {
         display: none;
+      }
+
+      & > img {
+        height: 100%;
+        width: 100%;
       }
     }
 
