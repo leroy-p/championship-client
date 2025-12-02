@@ -1,32 +1,75 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { TooltipContext } from '../../context/tooltip'
+import { TooltipPosition, TooltipType } from '../../types/tooltips'
 
 export default function Head() {
+  const { setTooltipProps } = useContext(TooltipContext)
+
+  function showTooltip(event: React.MouseEvent<HTMLElement, MouseEvent>, message: string) {
+    const rect = event.currentTarget.getBoundingClientRect()
+
+    setTooltipProps({
+      common: {
+        rect,
+        position: TooltipPosition.BOTTOM,
+      },
+      custom: {
+        type: TooltipType.SIMPLE,
+        message,
+      },
+    })
+  }
+
   return (
     <Container>
       <div className="table-cell main" />
       <div className="table-cell pts">
-        <p>pts</p>
+        <p onMouseEnter={(event) => showTooltip(event, 'Points')} onMouseLeave={() => setTooltipProps(undefined)}>
+          pts
+        </p>
       </div>
       <div className="table-cell">
-        <p>J.</p>
+        <p onMouseEnter={(event) => showTooltip(event, 'Match joués')} onMouseLeave={() => setTooltipProps(undefined)}>
+          J.
+        </p>
       </div>
       <div className="table-cell">
-        <p>G.</p>
+        <p
+          onMouseEnter={(event) => showTooltip(event, 'Matchs gagnés')}
+          onMouseLeave={() => setTooltipProps(undefined)}
+        >
+          G.
+        </p>
       </div>
       <div className="table-cell">
-        <p>P.</p>
+        <p
+          onMouseEnter={(event) => showTooltip(event, 'Matchs perdus')}
+          onMouseLeave={() => setTooltipProps(undefined)}
+        >
+          P.
+        </p>
       </div>
       <div className="table-cell">
-        <p>p.</p>
+        <p onMouseEnter={(event) => showTooltip(event, 'Sets pour')} onMouseLeave={() => setTooltipProps(undefined)}>
+          p.
+        </p>
       </div>
       <div className="table-cell">
-        <p>c.</p>
+        <p onMouseEnter={(event) => showTooltip(event, 'Sets contres')} onMouseLeave={() => setTooltipProps(undefined)}>
+          c.
+        </p>
       </div>
       <div className="table-cell">
-        <p>+/-</p>
+        <p onMouseEnter={(event) => showTooltip(event, 'Set-average')} onMouseLeave={() => setTooltipProps(undefined)}>
+          +/-
+        </p>
       </div>
       <div className="table-cell results">
-        <p>
+        <p
+          onMouseEnter={(event) => showTooltip(event, 'Gagnés/Perdus')}
+          onMouseLeave={() => setTooltipProps(undefined)}
+        >
           <span className="victory">G.</span>
           <span className="defeat">P.</span>
         </p>

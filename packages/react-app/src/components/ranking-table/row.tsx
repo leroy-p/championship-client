@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { generateRoutePath, RoutePath } from '../../app/router-config'
-import { GameResult, GqlUser } from '../../types/types'
-import { formatName, getUserStreak } from '../../utils/utils'
+import { GqlUser } from '../../types/types'
+import { formatName } from '../../utils/utils'
 import Streak from './streak'
 
 interface IProps {

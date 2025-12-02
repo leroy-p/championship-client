@@ -3,6 +3,7 @@ import Div100vh from 'react-div-100vh'
 import styled from 'styled-components'
 import background from '../assets/images/background.png'
 import Footer from './footer'
+import GlobalTooltip from './global-tooltip'
 import Header from './header'
 import Main from './main'
 
@@ -16,16 +17,13 @@ export default function Layout({ children }: IProps) {
       <Header />
       <Main>{children}</Main>
       <Footer />
+      <GlobalTooltip />
     </Container>
   )
 }
 
 const Container = styled(Div100vh)`
   align-items: center;
-  /* background-color: ${({ theme }) => theme.palette.primary};
-  background-image: url("${background}");
-  background-position: center;
-  background-size: cover; */
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,18 +1,43 @@
 import styled from 'styled-components'
-import { GameResult, GqlUser } from '../../types/types'
+import { GameResult, GqlUser, IGameResult } from '../../types/types'
 import { getUserStreak } from '../../utils/utils'
+import { useContext } from 'react'
+import { TooltipContext } from '../../context/tooltip'
+import { TooltipPosition, TooltipType } from '../../types/tooltips'
 
 interface IProps {
   user: GqlUser
 }
 
 export default function Streak({ user }: IProps) {
+  const { setTooltipProps } = useContext(TooltipContext)
+
+  function showTooltip(event: React.MouseEvent<HTMLElement, MouseEvent>, gameResult: IGameResult) {
+    const rect = event.currentTarget.getBoundingClientRect()
+
+    setTooltipProps({
+      common: {
+        rect,
+        position: TooltipPosition.TOP,
+      },
+      custom: {
+        type: TooltipType.GAME,
+        gameResult,
+      },
+    })
+  }
+
   const streak = getUserStreak(user)
 
   return (
     <Container>
-      {streak.map((result, index) => (
-        <div className={result === GameResult.VICTORY ? 'game-result victory' : 'game-result defeat'} key={index} />
+      {streak.map((gameResult, index) => (
+        <div
+          className={gameResult.result === GameResult.VICTORY ? 'game-result victory' : 'game-result defeat'}
+          key={index}
+          onMouseEnter={(event) => showTooltip(event, gameResult)}
+          onMouseLeave={() => setTooltipProps(undefined)}
+        />
       ))}
     </Container>
   )

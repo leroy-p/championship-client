@@ -1,16 +1,14 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { generateRoutePath, RoutePath } from '../../app/router-config'
-import { GqlUserGame } from '../../types/types'
 
 interface IProps {
   score1: number | null | undefined
   score2: number | null | undefined
+  defeat?: boolean
 }
 
-export default function SetScore({ score1, score2 }: IProps) {
+export default function SetScore({ score1, score2, defeat }: IProps) {
   return (
-    <Container>
+    <Container $defeat={defeat}>
       {score1 !== undefined && score2 !== undefined && score1 !== null && score2 !== null && (
         <p>
           <span className={score1 > score2 ? 'strong' : ''}>{score1}</span>/
@@ -21,7 +19,7 @@ export default function SetScore({ score1, score2 }: IProps) {
   )
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $defeat?: boolean }>`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -35,7 +33,7 @@ const Container = styled.div`
     }
 
     .strong {
-      color: ${({ theme }) => theme.palette.secondary};
+      color: ${({ theme, $defeat }) => ($defeat ? theme.palette.lose : theme.palette.secondary)};
       font-weight: bold;
     }
   }

@@ -8,3 +8,9 @@ export enum GameResult {
   VICTORY = 'VICTORY',
   DEFEAT = 'DEFEAT',
 }
+
+export interface IGameResult {
+  opponentName: string
+  game: GqlUserGame
+  result: GameResult
+}
