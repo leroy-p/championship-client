@@ -11,7 +11,7 @@ import { GqlGame } from '../types/types'
 
 export default function Calendar() {
   const { data, loading, refetch } = useQuery<GameFindManyQuery, GameFindManyQueryVariables>(GameFindManyDocument, {})
-  const [index, setIndex] = useState<number>(9)
+  const [index, setIndex] = useState<number>(10)
   const [selectedGame, setSelectedGame] = useState<GqlGame | undefined>(undefined)
 
   const games = data?.gameFindMany
