@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <Container>
-      <Link to={generateRoutePath(RoutePath.RANKING, {})} className="title-container">
+      <Link to={generateRoutePath(RoutePath.PLAYOFF, {})} className="title-container">
         <img alt="" src={logo} />
         <p>
           Cr<span>o</span>ss The Aces
