@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import rawPlayoffData from '../data/playoff.json'
 import Layout from '../layout'
 import { formatName } from '../utils/utils'
+import { generateRoutePath, RoutePath } from '../app/router-config'
+import { Link } from 'react-router-dom'
 
 export default function Playoff() {
   const connectorVars = {
@@ -15,7 +17,7 @@ export default function Playoff() {
     ['--bottom' as any]: '83.33%',
   }
 
-  type Player = { name: string; score: number[] | null }
+  type Player = { id: number | null; name: string | null; score: number[] | null }
   type Match = { id: string; players: Player[] }
   type PlayoffData = {
     quarterFinals: Match[]
@@ -95,13 +97,19 @@ export default function Playoff() {
                   const highlight = winner?.name === player.name
                   const setWins = getSetWins(match as Match)
 
-                  const avatarBaseName = player.name.split(' ')[0]
-                  const avatarSrc = player.name === '-' ? null : `/avatars/${formatName(avatarBaseName)}.png`
+                  const avatarBaseName = player.name?.split(' ')[0] || ''
+                  const avatarSrc = !player.name ? null : `/avatars/${formatName(avatarBaseName)}.png`
 
                   return (
                     <div className={`player-row${highlight ? ' winner' : ''}`} key={player.name}>
                       <div className="pic-container">{avatarSrc && <img alt="" src={avatarSrc} />}</div>
-                      <span className="player-name">{player.name}</span>
+                      {player.name && player.id ? (
+                        <Link className="player-name" to={generateRoutePath(RoutePath.PLAYER, { id: player.id })}>
+                          {player.name}
+                        </Link>
+                      ) : (
+                        <span className="player-name">-</span>
+                      )}
                       {player.score !== null && (
                         <div className="player-sets">
                           {player.score.map((setScore, setIndex) => {
@@ -129,13 +137,19 @@ export default function Playoff() {
                   const highlight = winner?.name === player.name
                   const setWins = getSetWins(match as Match)
 
-                  const avatarBaseName = player.name.split(' ')[0]
-                  const avatarSrc = player.name === '-' ? null : `/avatars/${formatName(avatarBaseName)}.png`
+                  const avatarBaseName = player.name?.split(' ')[0] || ''
+                  const avatarSrc = !player.name ? null : `/avatars/${formatName(avatarBaseName)}.png`
 
                   return (
                     <div className={`player-row${highlight ? ' winner' : ''}`} key={player.name}>
                       <div className="pic-container">{avatarSrc && <img alt="" src={avatarSrc} />}</div>
-                      <span className="player-name">{player.name}</span>
+                      {player.name && player.id ? (
+                        <Link className="player-name" to={generateRoutePath(RoutePath.PLAYER, { id: player.id })}>
+                          {player.name}
+                        </Link>
+                      ) : (
+                        <span className="player-name">-</span>
+                      )}
                       {player.score !== null && (
                         <div className="player-sets">
                           {player.score.map((setScore, setIndex) => {
@@ -162,13 +176,19 @@ export default function Playoff() {
                 const highlight = winner?.name === player.name
                 const setWins = getSetWins(finalMatch as Match)
 
-                const avatarBaseName = player.name.split(' ')[0]
-                const avatarSrc = player.name === '-' ? null : `/avatars/${formatName(avatarBaseName)}.png`
+                const avatarBaseName = player.name?.split(' ')[0] || ''
+                const avatarSrc = !player.name ? null : `/avatars/${formatName(avatarBaseName)}.png`
 
                 return (
                   <div className={`player-row${highlight ? ' winner' : ''}`} key={player.name}>
                     <div className="pic-container">{avatarSrc && <img alt="" src={avatarSrc} />}</div>
-                    <span className="player-name">{player.name}</span>
+                    {player.name && player.id ? (
+                      <Link className="player-name" to={generateRoutePath(RoutePath.PLAYER, { id: player.id })}>
+                        {player.name}
+                      </Link>
+                    ) : (
+                      <span className="player-name">-</span>
+                    )}
                     {player.score !== null && (
                       <div className="player-sets">
                         {player.score.map((setScore, setIndex) => {
@@ -257,6 +277,7 @@ const Bracket = styled.div`
 `
 
 const MatchCard = styled.div`
+  backdrop-filter: blur(5px);
   background-color: rgba(22, 22, 23, 0.2);
   border: ${({ theme }) => `solid 1px ${theme.palette.secondary}`};
   border-radius: 14px;
