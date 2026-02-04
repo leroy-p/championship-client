@@ -8,6 +8,7 @@ import Ranking from '../pages/ranking'
 import Root from '../pages/root'
 import Page from './page'
 import { RoutePath } from './router-config'
+import Playoff from '../pages/playoff'
 
 interface IRouteParams {
   component: React.ReactNode
@@ -33,6 +34,11 @@ const routes: IRouteParams[] = [
   {
     component: <Player />,
     path: RoutePath.PLAYER,
+  },
+  {
+    component: <Playoff />,
+    path: RoutePath.PLAYOFF,
+    pageName: 'Phases finales',
   },
 ]
 

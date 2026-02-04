@@ -6,7 +6,7 @@ export default function Root() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    navigate(generateRoutePath(RoutePath.RANKING, {}))
+    navigate(generateRoutePath(RoutePath.PLAYOFF, {}))
   }, [])
 
   return <></>

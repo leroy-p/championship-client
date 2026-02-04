@@ -24,6 +24,7 @@ export enum RoutePath {
   RANKING = '/ranking',
   CALENDAR = '/calendar',
   PLAYER = '/player/:id',
+  PLAYOFF = '/playoff',
 }
 
 export interface IRoutePathParams {
@@ -31,4 +32,5 @@ export interface IRoutePathParams {
   [RoutePath.RANKING]: {}
   [RoutePath.CALENDAR]: {}
   [RoutePath.PLAYER]: { id: number }
+  [RoutePath.PLAYOFF]: {}
 }

@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router'
 import styled from 'styled-components'
-import { APP_NAME } from '../app/page'
 import { generateRoutePath, RoutePath } from '../app/router-config'
 import logo from '../assets/images/logo.png'
 
@@ -16,6 +15,13 @@ export default function Header() {
         </p>
       </Link>
       <div className="links-container">
+        <Link
+          className={location.pathname.includes(RoutePath.PLAYOFF) ? 'selected' : ''}
+          to={generateRoutePath(RoutePath.PLAYOFF, {})}
+        >
+          <p>Phase finale</p>
+          <div />
+        </Link>
         <Link
           className={location.pathname.includes(RoutePath.RANKING) ? 'selected' : ''}
           to={generateRoutePath(RoutePath.RANKING, {})}
@@ -95,6 +101,14 @@ const Container = styled.header`
       justify-content: center;
       position: relative;
       width: 128px;
+
+      @media screen and (max-width: 824px) {
+        width: 96px;
+
+        & > p {
+          font-size: 14px;
+        }
+      }
 
 
       & > div {

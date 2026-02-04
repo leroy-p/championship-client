@@ -1,0 +1,55 @@
+{
+  "quarterFinals": [
+    {
+      "id": "q1",
+      "players": [
+        { "name": "Etienne (1)", "score": null },
+        { "name": "Quentin (8)", "score": null }
+      ]
+    },
+    {
+      "id": "q2",
+      "players": [
+        { "name": "Nathalie (4)", "score": null },
+        { "name": "Martin (5)", "score": null }
+      ]
+    },
+    {
+      "id": "q3",
+      "players": [
+        { "name": "Yann (2)", "score": null },
+        { "name": "Matthieu (7)", "score": null }
+      ]
+    },
+    {
+      "id": "q4",
+      "players": [
+        { "name": "Gabriel (3)", "score": null },
+        { "name": "Sami (6)", "score": null }
+      ]
+    }
+  ],
+  "semiFinals": [
+    {
+      "id": "s1",
+      "players": [
+        { "name": "-", "score": null },
+        { "name": "-", "score": null }
+      ]
+    },
+    {
+      "id": "s2",
+      "players": [
+        { "name": "-", "score": null },
+        { "name": "-", "score": null }
+      ]
+    }
+  ],
+  "final": {
+    "id": "f1",
+    "players": [
+      { "name": "-", "score": null },
+      { "name": "-", "score": null }
+    ]
+  }
+}
