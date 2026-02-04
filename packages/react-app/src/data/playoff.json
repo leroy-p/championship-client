@@ -3,29 +3,29 @@
     {
       "id": "q1",
       "players": [
-        { "id": 41, "name": "Etienne (1)", "score": null },
-        { "id": 51, "name": "Quentin (8)", "score": null }
+        { "id": 41, "name": "Etienne Leroy (1)", "score": null },
+        { "id": 51, "name": "Quentin Forget (8)", "score": null }
       ]
     },
     {
       "id": "q2",
       "players": [
-        { "id": 40, "name": "Nathalie (4)", "score": null },
-        { "id": 45, "name": "Martin (5)", "score": null }
+        { "id": 40, "name": "Nathalie Li (4)", "score": null },
+        { "id": 45, "name": "Martin Chertier (5)", "score": null }
       ]
     },
     {
       "id": "q3",
       "players": [
-        { "id": 44, "name": "Yann (2)", "score": null },
-        { "id": 48, "name": "Matthieu (7)", "score": null }
+        { "id": 44, "name": "Yann Greiveldinger (2)", "score": null },
+        { "id": 48, "name": "Matthieu Maillet (7)", "score": null }
       ]
     },
     {
       "id": "q4",
       "players": [
-        { "id": 43, "name": "Gabriel (3)", "score": null },
-        { "id": 54, "name": "Sami (6)", "score": null }
+        { "id": 43, "name": "Gabriel Uribe (3)", "score": null },
+        { "id": 54, "name": "Sami Chlagou (6)", "score": null }
       ]
     }
   ],
