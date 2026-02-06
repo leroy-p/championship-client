@@ -319,7 +319,7 @@ const MatchCard = styled.div`
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 20px;
-    gap: 8px;
+    gap: 0;
     justify-items: center;
   }
 
