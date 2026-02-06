@@ -24,8 +24,8 @@
     {
       "id": "q4",
       "players": [
-        { "id": 43, "name": "Gabriel Uribe (3)", "score": null },
-        { "id": 54, "name": "Sami Chlagou (6)", "score": null }
+        { "id": 43, "name": "Gabriel Uribe (3)", "score": [11, 11] },
+        { "id": 54, "name": "Sami Chlagou (6)", "score": [9, 3] }
       ]
     }
   ],
@@ -41,7 +41,7 @@
       "id": "s2",
       "players": [
         { "id": null, "name": null, "score": null },
-        { "id": null, "name": null, "score": null }
+        { "id": 43, "name": "Gabriel Uribe (3)", "score": null }
       ]
     }
   ],
