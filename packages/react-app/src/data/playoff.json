@@ -17,8 +17,8 @@
     {
       "id": "q3",
       "players": [
-        { "id": 44, "name": "Yann Greiveldinger (2)", "score": null },
-        { "id": 48, "name": "Matthieu Maillet (7)", "score": null }
+        { "id": 44, "name": "Yann Greiveldinger (2)", "score": [11, 11] },
+        { "id": 48, "name": "Matthieu Maillet (7)", "score": [6, 3] }
       ]
     },
     {
@@ -40,7 +40,7 @@
     {
       "id": "s2",
       "players": [
-        { "id": null, "name": null, "score": null },
+        { "id": 44, "name": "Yann Greiveldinger (2)", "score": null },
         { "id": 43, "name": "Gabriel Uribe (3)", "score": null }
       ]
     }
