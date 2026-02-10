@@ -40,8 +40,8 @@
     {
       "id": "s2",
       "players": [
-        { "id": 44, "name": "Yann Greiveldinger (2)", "score": null },
-        { "id": 43, "name": "Gabriel Uribe (3)", "score": null }
+        { "id": 44, "name": "Yann Greiveldinger (2)", "score": [5, 11, 11] },
+        { "id": 43, "name": "Gabriel Uribe (3)", "score": [11, 9, 6] }
       ]
     }
   ],
@@ -49,7 +49,7 @@
     "id": "f1",
     "players": [
       { "id": 41, "name": "Etienne Leroy (1)", "score": null },
-      { "id": null, "name": null, "score": null }
+      { "id": 44, "name": "Yann Greiveldinger (2)", "score": null }
     ]
   }
 }
