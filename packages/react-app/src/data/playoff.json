@@ -33,8 +33,8 @@
     {
       "id": "s1",
       "players": [
-        { "id": 41, "name": "Etienne Leroy (1)", "score": null },
-        { "id": 45, "name": "Martin Chertier (5)", "score": null }
+        { "id": 41, "name": "Etienne Leroy (1)", "score": [11, 9, 11] },
+        { "id": 45, "name": "Martin Chertier (5)", "score": [2, 11, 7] }
       ]
     },
     {
@@ -48,7 +48,7 @@
   "final": {
     "id": "f1",
     "players": [
-      { "id": null, "name": null, "score": null },
+      { "id": 41, "name": "Etienne Leroy (1)", "score": null },
       { "id": null, "name": null, "score": null }
     ]
   }
