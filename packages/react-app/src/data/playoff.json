@@ -48,8 +48,8 @@
   "final": {
     "id": "f1",
     "players": [
-      { "id": 41, "name": "Etienne Leroy (1)", "score": null },
-      { "id": 44, "name": "Yann Greiveldinger (2)", "score": null }
+      { "id": 41, "name": "Etienne Leroy (1)", "score": [11, 11, 12] },
+      { "id": 44, "name": "Yann Greiveldinger (2)", "score": [7, 9, 10] }
     ]
   }
 }
